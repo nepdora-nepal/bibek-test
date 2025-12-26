@@ -105,25 +105,27 @@ export function ImageManagerModal({ isOpen, onClose, onSelect, initialTab = "lib
                                             <div
                                                 key={key}
                                                 className={cn(
-                                                    "relative group cursor-pointer aspect-square rounded-lg overflow-hidden border-2 transition-all shadow-sm",
+                                                    "relative group cursor-pointer aspect-square rounded-lg overflow-hidden border-2 transition-all shadow-sm bg-muted/30 hover:bg-muted/50",
                                                     selectedImage === key ? "border-primary ring-2 ring-primary ring-offset-2" : "border-transparent hover:border-muted-foreground/25"
                                                 )}
                                                 onClick={() => setSelectedImage(key)}
                                             >
-                                                <Image
-                                                    src={getImageUrl(key)}
-                                                    alt={key}
-                                                    fill
-                                                    className="object-cover"
-                                                />
+                                                <div className="absolute inset-2">
+                                                    <Image
+                                                        src={getImageUrl(key)}
+                                                        alt={key}
+                                                        fill
+                                                        className="object-contain"
+                                                    />
+                                                </div>
                                                 {selectedImage === key && (
-                                                    <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
-                                                        <div className="bg-primary text-primary-foreground rounded-full p-1">
+                                                    <div className="absolute inset-0 bg-primary/10 flex items-center justify-center">
+                                                        <div className="bg-primary text-primary-foreground rounded-full p-1 shadow-sm">
                                                             <Check className="h-4 w-4" />
                                                         </div>
                                                     </div>
                                                 )}
-                                                <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-[10px] sm:text-xs p-1 truncate px-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-[10px] sm:text-xs p-1.5 truncate text-center opacity-0 group-hover:opacity-100 transition-opacity">
                                                     {key}
                                                 </div>
                                             </div>
